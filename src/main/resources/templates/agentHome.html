@@ -13,30 +13,66 @@
     <body>
 
         <!-- Header -->
-        <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"> E-money </a>
-        </nav>
+        <nav th:replace="/fragments :: header"></nav>
 
         <!-- Container -->
-        <form class="text-center">
-            <div class="form-group">
-                <label class="control-label"> Safaricom Float </label>
-                <input type="input"/>
+
+        <div class="container" style="margin-top: 30px;">
+
+            <h3 class="text-center"><u> Recent entries </u></h3>
+
+            <div style="margin: 30px;" id="recentEntries">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default"> Safaricom Float </span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> Ksh </span>
+                    </div>
+                    <input type="text" class="form-control text-right" aria-label="Amount (to the nearest dollar)"value="30000" readonly>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default"> Airtel Float </span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> Ksh </span>
+                    </div>
+                    <input type="text" class="form-control text-right" aria-label="Amount (to the nearest dollar)"value="30000" readonly>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default"> Cash </span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> Ksh </span>
+                    </div>
+                    <input type="text" class="form-control text-right" aria-label="Amount (to the nearest dollar)"value="30000" readonly>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="control-label" > Airtel Float </label>
-                <input type="text" />
+
+            <h3 class="text-center"><u> User Options </u></h3>
+
+            <div id="userOptions" style="margin: 30px;">
+
+                <a class="btn btn-primary" th:href="@{/users}"> Users </a>
+
             </div>
-            <div class="form-group">
-                <label class="control-label"> Cash </label>
-                <input type="text" />
-            </div>
-        </form>
+
+        </div>
 
         <!-- Footer -->
-        <nav class="navbar fixed-bottom navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Fixed bottom</a>
-        </nav>
+        <nav th:replace="/fragments :: footer"></nav>
 
     </body>
 </html>

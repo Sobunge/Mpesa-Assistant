@@ -15,7 +15,7 @@
         <!-- header -->
 
         <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"> E-money </a>
+            <a class="navbar-brand" th:href="@{/}"> E-money </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -65,78 +65,14 @@
         <!-- Model Body for Login and Registration -->
 
         <!-- Login -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"> Login </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="id"> Id Number </label>
-                                <input type="text" class="form-control" id="id" placeholder="id number">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword">Password</label>
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-check-label"><input type="checkbox"> Remember me</label>
-                            </div>
-                            <a class="btn btn-primary" th:href="@{/agentHome}">Sign in</a>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModel" data-dismiss="modal" data-whatever="@mdo"> Register </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+          <div th:replace="/fragments :: loginModel"></div>
 
         <!-- Registration -->
-        <div class="modal fade" id="registerModel" tabindex="-1" role="dialog" aria-labelledby="registerModelLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="registerModalLabel"> Register </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="inputEmail">Email</label>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword">Password</label>
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-check-label"><input type="checkbox"> Remember me</label>
-                            </div>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal"> Sign up </button>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal"> Login </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div th:replace="/fragments :: registerModel"></div>
 
         <!-- Footer -->
 
-        <nav class="navbar fixed-bottom navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Fixed bottom</a>
-        </nav>
+      <nav th:replace="/fragments :: footer"></nav>
 
     </body>
 </html>

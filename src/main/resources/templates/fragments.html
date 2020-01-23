@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+        <title> E-money </title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet"
+              th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" />
+    </head>
+    <body>
+
+        <!-- Header Fragment -->
+        <nav class="navbar navbar-dark bg-dark" th:fragment="header">
+            <a class="navbar-brand" th:href="@{/agentHome}"> E-money </a>
+        </nav>
+
+        <!-- User registration model -->
+        <div class="modal fade" id="registerModel" tabindex="-1" role="dialog" 
+             aria-labelledby="registerModelLabel" aria-hidden="true" th:fragment="registerModel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel"> Registration </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputFirstName"> First Name </label>
+                                    <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputSecondName"> Second Name </label>
+                                    <input type="text" class="form-control" id="inputSecondName" placeholder="Second Name">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputThirdName"> Third Name </label>
+                                    <input type="text" class="form-control" id="inputThirdName" placeholder="Third Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputId"> Id number </label>
+                                <input type="text" class="form-control" id="inputId" placeholder=" Id Number ">
+                            </div>
+                            <label for="inputPhoneNumber"> Phone Number </label>
+                            <div class="form-group input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"> +254 </span>
+                                </div>
+                                <input type="text" class="form-control" id="phoneNumber" placeholder=" Phone Number ">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword"> Password </label>
+                                    <input type="password" class="form-control" id="inputPassword" placeholder=" Password ">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword"> Confirm Password </label>
+                                    <input type="password" class="form-control" id="inputPassword" placeholder=" Password ">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-dismiss="modal"> Login </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Fragment -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" 
+             aria-labelledby="exampleModalLabel" aria-hidden="true" th:fragment="loginModel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"> Login </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="id"> Id Number </label>
+                                <input type="text" class="form-control" id="id" placeholder="id number">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword">Password</label>
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-check-label"><input type="checkbox"> Remember me</label>
+                            </div>
+                            <a class="btn btn-primary" th:href="@{/agentHome}">Sign in</a>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModel" data-dismiss="modal" data-whatever="@mdo"> Register </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Fragment -->
+        <nav class="navbar fixed-bottom navbar-dark bg-dark" th:fragment="footer">
+            <a class="navbar-brand" href="#">Fixed bottom</a>
+        </nav>
+
+    </body>
+</html>
