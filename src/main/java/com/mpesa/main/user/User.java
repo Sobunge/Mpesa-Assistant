@@ -1,5 +1,7 @@
 package com.mpesa.main.user;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,10 +46,10 @@ public class User {
     @Size(min = 4, max = 255)
     private String password;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private Role role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Role> role;
 
-    public User(String firstName, String secondName, String thirdName, int idNumber, int phoneNumber, String password, Role role) {
+    public User(String firstName, String secondName, String thirdName, int idNumber, int phoneNumber, String password, List<Role> role) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.thirdName = thirdName;
@@ -56,6 +58,8 @@ public class User {
         this.password = password;
         this.role = role;
     }
+
+    
 
     public User(int idNumber, String password) {
         this.idNumber = idNumber;
@@ -110,13 +114,14 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
+    public List<Role> getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(List<Role> role) {
         this.role = role;
     }
+
     
     
 

@@ -1,5 +1,6 @@
 package com.mpesa.main.user;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +14,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="role")
-public class Role {
+public class Role implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +29,9 @@ public class Role {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    public Role() {
+    }
+    
     public Role(String role, User user) {
         this.role = role;
         this.user = user;
