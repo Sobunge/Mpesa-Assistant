@@ -13,6 +13,14 @@
 
         <!-- header -->
         <nav th:replace="/fragments :: mainHeader"> Main Header </nav>
+        
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Login</li>
+            </ol>
+        </nav>
 
         <!-- Main Body -->
     <body>
@@ -39,7 +47,7 @@
                                 </div>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit"> Login </button>
                                 <hr class="my-4">
-                
+
                                 <p> Are you a member? <a th:href="@{/register}"> Register </a> </p>
                             </form>
                         </div>

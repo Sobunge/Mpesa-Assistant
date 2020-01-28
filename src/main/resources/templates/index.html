@@ -12,10 +12,18 @@
     </head>
     <body>
 
-       <!-- header -->
-       <nav th:replace="/fragments :: mainHeader"> Main Header </nav>
+        <!-- header -->
+        <nav th:replace="/fragments :: mainHeader"> Main Header </nav>
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+        </nav>
 
         <!-- Mainbody -->
+
         <div class="jumbotron jumbotron-fluid text-center">
             <div class="container">
                 <h1 class="display-4"> E-money, Lets get started!</h1>
@@ -28,6 +36,7 @@
                     </p>          
             </div>
         </div>
+
 
         <!-- Footer -->
 
