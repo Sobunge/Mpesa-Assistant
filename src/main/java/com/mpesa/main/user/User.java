@@ -1,5 +1,6 @@
 package com.mpesa.main.user;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,43 +9,48 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
     
     @Column(name="firstname")
-    @Size(min=3,max=14)
-    @NotNull
+    @Size(min=3,max=14,message = "Should be a minimum of 3 and a maximum of 14")
+    @NotNull(message = "Must contain a value")
     private String firstName;
     
     @Column(name = "secondname")
-    @Size(min = 3,max = 14)
-    @NotNull
+    @Size(min = 3,max = 14, message = "Should be a minimum of 3 and a maximum of 14")
+    @NotNull(message = "Must contain a value")
     private String secondName;
     
     @Column(name = "thirdname")
-    @Size(min = 3,max = 14)
-    @NotNull
+    @Size(min = 3,max = 14, message = "Should be a minimum of 3 and a maximum of 14")
+    @NotNull(message = "Must contain a value")
     private String thirdName;
     
+    @NotNull(message = "Must contain a value")
     @Column(name = "id")
-    @Size(min = 7,max = 8)
+    @Digits(integer = 8, fraction = 0)
     @Id
     private int idNumber;
     
     @Column(name = "phone", length = 10)
-    @NotNull
-    @NotBlank
+    @NotNull(message = "Must contain a value")
     private int phoneNumber;
     
     @Column(name = "password")
-    @NotNull
+    @NotNull(message = "Must contain a value")
     @Size(min = 4, max = 255)
     private String password;
+    
+    @Transient
+    private String confirmPassword;
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Role> role;
@@ -59,7 +65,8 @@ public class User {
         this.role = role;
     }
 
-    
+    public User() {
+    }
 
     public User(int idNumber, String password) {
         this.idNumber = idNumber;
@@ -113,6 +120,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }   
 
     public List<Role> getRole() {
         return role;

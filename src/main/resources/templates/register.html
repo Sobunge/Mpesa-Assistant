@@ -29,37 +29,52 @@
                     <div class="card card-signin my-5">
                         <div class="card-body">
                             <h5 class="card-title text-center">Sign Up</h5>
-                            <form>
+                            <form th:action="@{/register}"
+                                  th:object="${user}" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="firstname"> First Name </label>
-                                        <input type="firstname" class="form-control" id="inputFirstname" placeholder="First Name">
+                                        <input type="text" th:field="*{firstName}" class="form-control" id="firstName" placeholder="First Name" autofocus="" />
+                                        <div class="text text-danger"
+                                             th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="secondname"> Second Name </label>
-                                        <input type="secondname" class="form-control" id="inputSecondname" placeholder="Second Name">
+                                        <input type="text" th:field="*{secondName}" class="form-control" id="secondname" placeholder="Second Name" />
+                                        <div class="text text-danger"
+                                         th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="thirdname"> Third Name </label>
-                                        <input type="thirdname" class="form-control" id="inputThirdname" placeholder="Third Name">
+                                        <input type="text" th:field="*{thirdName}" class="form-control" id="thirdname" placeholder="Third Name" />
+                                        <div class="text text-danger"
+                                         th:if="${#fields.hasErrors('thirdName')}" th:errors="*{thirdName}"></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="id"> Id Number </label>
-                                    <input type="text" class="form-control" id="id" placeholder="Id Number">
+                                    <input type="text" th:field="*{idNumber}" class="form-control" id="idNumber" placeholder="Id Number" />
+                                    <div class="text text-danger"
+                                         th:if="${#fields.hasErrors('idNumber')}" th:errors="*{idNumber}"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone"> Phone Number </label>
-                                    <input type="text" class="form-control" id="phone" placeholder="Phone Number">
+                                    <input type="text"  th:field="*{phoneNumber}" class="form-control" id="phone" placeholder="Phone Number" />
+                                    <div class="text text-danger"
+                                         th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="password"> Password </label>
-                                        <input type="password" class="form-control" id="Password" placeholder="Password">
+                                        <input type="password" th:field="*{password}" class="form-control" id="Password" placeholder="Password" />
+                                        <div class="text text-danger"
+                                         th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="confirmPassword"> Password </label>
-                                        <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password">
+                                        <label for="confirmPassword"> Confirm Password </label>
+                                        <input type="password" th:field="*{confirmPassword}" class="form-control" id="ConfirmPassword" placeholder="Confirm Password" />
+                                        <div class="text text-danger"
+                                         th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Sign Up</button>
