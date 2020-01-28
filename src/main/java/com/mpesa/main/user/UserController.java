@@ -10,7 +10,6 @@ public class UserController {
     @Autowired
     UserService userService;
     
-    @GetMapping("/users")
     public void users(User user) {
 
         
