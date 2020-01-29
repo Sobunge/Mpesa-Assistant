@@ -45,6 +45,10 @@ public class UserController {
         return "login";
     }
     
+   @GetMapping("/users")
+   public String getAllUsers(){
    
+       return "users";
+   }
             
 }
