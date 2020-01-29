@@ -46,5 +46,18 @@ public class UserService {
         return userRepository.existsById(user.getIdNumber());
     }
     
-  
+    public User getUser(int id){
+    
+        User user = new User();
+        user = userRepository.getOne(id);
+        
+        return user;
+    }
+    
+    public List<User> findAll(){
+    
+        return (List<User>) userRepository.findAll();
+    }
+
+    
 }

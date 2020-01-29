@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
-        <title> E-money </title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet"
-              th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" />
-    </head>
+
+    <head th:replace="/fragments:: head"></head>
+
     <body>
 
         <!-- header -->
@@ -28,8 +22,13 @@
                 <div class="col-sm-12 col-md-10 col-lg-5 mx-auto">
                     <div class="card card-signin my-5">
                         <div class="card-body">
+
+                            <div class="alert alert-danger" th:if="${message}">
+                                <p class="text text-center" th:text="${message}"> Password should match confirm password </p>
+                            </div>
+
                             <h5 class="card-title text-center">Sign Up</h5>
-                            <form th:action="@{/register}"
+                            <form th:action="@{/register}" id="registration_form"
                                   th:object="${user}" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
@@ -42,13 +41,13 @@
                                         <label for="secondname"> Second Name </label>
                                         <input type="text" th:field="*{secondName}" class="form-control" id="secondname" placeholder="Second Name" />
                                         <div class="text text-danger"
-                                         th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></div>
+                                             th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="thirdname"> Third Name </label>
                                         <input type="text" th:field="*{thirdName}" class="form-control" id="thirdname" placeholder="Third Name" />
                                         <div class="text text-danger"
-                                         th:if="${#fields.hasErrors('thirdName')}" th:errors="*{thirdName}"></div>
+                                             th:if="${#fields.hasErrors('thirdName')}" th:errors="*{thirdName}"></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -68,13 +67,13 @@
                                         <label for="password"> Password </label>
                                         <input type="password" th:field="*{password}" class="form-control" id="Password" placeholder="Password" />
                                         <div class="text text-danger"
-                                         th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                                             th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirmPassword"> Confirm Password </label>
-                                        <input type="password" th:field="*{confirmPassword}" class="form-control" id="ConfirmPassword" placeholder="Confirm Password" />
+                                        <input type="password" th:field="*{confirmPassword}" class="form-control" id="confirmPassword" placeholder="Confirm Password" />
                                         <div class="text text-danger"
-                                         th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></div>
+                                             th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Sign Up</button>

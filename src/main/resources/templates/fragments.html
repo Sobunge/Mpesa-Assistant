@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head th:fragment="head">
         <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/main.js}"></script>
         <title> E-money </title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet"
               th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" />
+        
     </head>
     <body>
-
 
         <!-- Main Header -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="mainHeader">
@@ -37,14 +38,13 @@
         <!-- Header Fragment -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="header">
             <a class="navbar-brand" th:href="@{/agentHome}"> E-money </a>
-
+            
             <form th:action="@{/logout}" method="post"> 
-                <input type="submit" value="Logout"/> 
+                <input class="btn btn-danger" type="submit" value="Logout"/> 
             </form>
         </nav>
 
         <!-- Saving Model -->
-
         <div class="modal fade" id="savingModal" tabindex="-1" role="dialog" 
              aria-labelledby="savingModalLabel" aria-hidden="true" th:fragment="savings">
             <div class="modal-dialog" role="document">
@@ -80,7 +80,6 @@
         </div>
 
         <!-- Loan transaction model -->
-
         <div class="modal fade" id="loanTransactionModal" tabindex="-1" 
              role="dialog" aria-labelledby="loanTransactionModalLabel" aria-hidden="true" th:fragment="loanTransaction">
             <div class="modal-dialog" role="document">

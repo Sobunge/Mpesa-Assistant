@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
-
+    
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("index");
         registry.addViewController("/").setViewName("index");
@@ -18,11 +18,11 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/register").setViewName("register");
     }
     
-     @Override
+    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-          .addResourceHandler("/webjars/**")
-          .addResourceLocations("/webjars/");
+                .addResourceHandler("/webjars/**", "/resources/**")
+                .addResourceLocations("/webjars/", "/resources/");
     }
-
+    
 }

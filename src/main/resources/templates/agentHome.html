@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" 
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
-        <title> E-money </title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet"
-              th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" />
-    </head>
+    
+    <head th:replace="/fragments:: head"></head>
+    
     <body>
 
         <!-- Header -->
@@ -18,7 +12,7 @@
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page"> Agent Home </li>
+                <li class="breadcrumb-item active" aria-current="page"> Home </li>
             </ol>
         </nav>
 

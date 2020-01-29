@@ -1,5 +1,6 @@
 package com.mpesa.main.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,25 +14,26 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="role")
+@Table(name = "role")
 public class Role implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    
+
     @Column(name = "role")
     @NotNull
     @NotEmpty
     private String role;
-    
+
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     public Role() {
     }
-    
+
     public Role(String role, User user) {
         this.role = role;
         this.user = user;
@@ -60,6 +62,5 @@ public class Role implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-    
-    
+
 }

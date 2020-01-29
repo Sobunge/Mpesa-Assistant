@@ -24,9 +24,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select id as principal, password as credentials, true from user where id = ?")
+                .usersByUsernameQuery("select id_number as principal, password as credentials, true from user where id_number = ?")
                 .passwordEncoder(passwordencoder())
-                .authoritiesByUsernameQuery("select user_id as pricipal, role as role from role where user_id = ? ")
+                .authoritiesByUsernameQuery("select user_id_number as pricipal, role as role from role where user_id_number = ? ")
                 .rolePrefix("ROLE_");
     }
 
@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/login", "/index", "/register",
-                        "/static/**", "/webjars/**").permitAll()
+                        "/js/**","/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login")

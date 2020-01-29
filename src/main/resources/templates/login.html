@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
-        <title> E-money </title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet"
-              th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" />
-    </head>
+
+    <head th:replace="/fragments:: head"></head>
+    
     <body>
 
         <!-- header -->
@@ -31,7 +25,7 @@
                         <div class="card-body">
 
                             <div class="alert alert-success" th:if="${success}">
-                                <p class="text text-center">Registration successful!! Please
+                                <p class="text text-center" th:text="${success}">Registration successful!! Please
                                     Sign in to continue</p>
                             </div>
                             <div class="alert alert-danger" th:if="${param.error}">

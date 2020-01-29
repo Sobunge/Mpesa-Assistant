@@ -1,5 +1,6 @@
 package com.mpesa.main.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -17,40 +18,41 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
-    
-    @Column(name="firstname")
-    @Size(min=3,max=14,message = "Should be a minimum of 3 and a maximum of 14")
+
+    @Column(name = "firstname")
+    @Size(min = 3, max = 14, message = "Should be a minimum of 3 and a maximum of 14")
     @NotNull(message = "Must contain a value")
     private String firstName;
-    
+
     @Column(name = "secondname")
-    @Size(min = 3,max = 14, message = "Should be a minimum of 3 and a maximum of 14")
+    @Size(min = 3, max = 14, message = "Should be a minimum of 3 and a maximum of 14")
     @NotNull(message = "Must contain a value")
     private String secondName;
-    
+
     @Column(name = "thirdname")
-    @Size(min = 3,max = 14, message = "Should be a minimum of 3 and a maximum of 14")
+    @Size(min = 3, max = 14, message = "Should be a minimum of 3 and a maximum of 14")
     @NotNull(message = "Must contain a value")
     private String thirdName;
-    
+
     @NotNull(message = "Must contain a value")
-    @Column(name = "id")
+    @Column(name = "id_number")
     @Digits(integer = 8, fraction = 0)
     @Id
     private int idNumber;
-    
+
     @Column(name = "phone", length = 10)
     @NotNull(message = "Must contain a value")
     private int phoneNumber;
-    
+
     @Column(name = "password")
     @NotNull(message = "Must contain a value")
     @Size(min = 4, max = 255)
     private String password;
-    
+
     @Transient
     private String confirmPassword;
-    
+
+    @JsonBackReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Role> role;
 
@@ -126,7 +128,7 @@ public class User implements Serializable {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
-    }   
+    }
 
     public List<Role> getRole() {
         return role;
@@ -135,8 +137,5 @@ public class User implements Serializable {
     public void setRole(List<Role> role) {
         this.role = role;
     }
-
-    
-    
 
 }
