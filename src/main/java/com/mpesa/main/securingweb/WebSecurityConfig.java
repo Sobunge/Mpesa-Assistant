@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     CustomSuccessHandler customSuccessHandler;
-    
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
@@ -44,7 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(customSuccessHandler)
                 .and()
                 .logout()
-                .logoutUrl("/logout")
+                .logoutSuccessHandler(new CustomLogoutSuccessHandler())
+                .invalidateHttpSession(true)
                 .logoutSuccessUrl("/login")
                 .permitAll()
                 .and()
